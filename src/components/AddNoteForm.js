@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext} from 'react';
+import NotesContext from '../context/notes-context'
 
-const AddNoteForm = ( { dispatch }) => {
+const AddNoteForm = () => {
 
+  const { dispatch } = useContext(NotesContext)  
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
@@ -17,14 +19,14 @@ const AddNoteForm = ( { dispatch }) => {
   }
 
   return (
-    <div>
+    <>
       <p>add note</p>
       <form onSubmit = {addNote}>
         <input value={title} onChange={(e) => setTitle(e.target.value)}/>
         <textarea value={body} onChange={(e) => setBody(e.target.value)}></textarea>
         <button>add note</button>
       </form>
-    </div>
+    </>
   )
 }
 
